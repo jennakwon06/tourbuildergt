@@ -12,6 +12,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/spiderable/1.0.12/web.browser/spiderable.js" />
         <item url="file://$USER_HOME$/.meteor/packages/spiderable/1.0.12/web.browser/spiderable_client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.3/web.browser/templating-tools.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/mrt_topojson/1.6.8/web.browser/packages/mrt:topojson.js" />
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.3/web.browser/compile-tags-with-spacebars.js" />
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.3/web.browser/html-scanner.js" />
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.3/web.browser/html-scanner-tests.js" />
@@ -179,6 +180,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/reactive-var/1.0.8/web.browser/reactive-var.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reload/1.1.7/web.browser/deprecated.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reload/1.1.7/web.browser/reload.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/d3js_d3/3.5.8/web.browser/packages/d3js_d3.js" />
         <item url="file://$USER_HOME$/.meteor/packages/retry/1.0.6/web.browser/retry.js" />
       </sourceFilesUrls>
     </properties>
@@ -193,6 +195,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/spiderable/1.0.12/web.browser/spiderable.js" />
       <root url="file://$USER_HOME$/.meteor/packages/spiderable/1.0.12/web.browser/spiderable_client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.3/web.browser/templating-tools.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/mrt_topojson/1.6.8/web.browser/packages/mrt:topojson.js" />
       <root url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.3/web.browser/compile-tags-with-spacebars.js" />
       <root url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.3/web.browser/html-scanner.js" />
       <root url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.3/web.browser/html-scanner-tests.js" />
@@ -360,6 +363,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/reactive-var/1.0.8/web.browser/reactive-var.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reload/1.1.7/web.browser/deprecated.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reload/1.1.7/web.browser/reload.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/d3js_d3/3.5.8/web.browser/packages/d3js_d3.js" />
       <root url="file://$USER_HOME$/.meteor/packages/retry/1.0.6/web.browser/retry.js" />
     </CLASSES>
     <SOURCES />

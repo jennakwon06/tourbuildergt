@@ -1,0 +1,117 @@
+/*TABLE */
+
+.resultsTable tbody tr:nth-child(odd) td {
+    background-color: lightgray;
+}
+
+.resultsTable tbody tr.highlight td {
+    background-color: lightskyblue;
+}
+
+.clickableRow:hover {
+    background-color: lightskyblue;
+}
+
+
+#mainContent {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    background-color: #E3F0FB;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+}
+.buttonStyle {
+    border-radius: 4px;
+    border: thin solid #F0E020;
+    padding: 5px;
+    background-color: #F8F094;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: #663300;
+    width: 75px;
+}
+
+.buttonStyle:hover {
+    border: thin solid #FFCC00;
+    background-color: #FCF9D6;
+    color: #996633;
+    cursor: pointer;
+}
+.buttonStyle:active {
+    border: thin solid #99CC00;
+    background-color: #F5FFD2;
+    color: #669900;
+    cursor: pointer;
+}
+.land {
+    fill: #ddd;
+}
+
+.border {
+    fill: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+
+body {
+    tab-size: 2;
+}
+
+.border--mesh {
+    stroke: #000;
+}
+
+.legend circle {
+    fill: none;
+    stroke: #ccc;
+}
+
+.legend text {
+    fill: #777;
+    font: 10px sans-serif;
+    text-anchor: middle;
+}
+
+#map .bubble circle {
+    fill: brown;
+    fill-opacity: .5;
+    stroke: white;
+    stroke-width: .5px;
+}
+
+#map--basic .bubble circle,
+#map--sorted .bubble circle {
+    stroke: white;
+}
+
+#map--sorted .bubble circle {
+    fill-opacity: .5;
+    stroke-width: .5px;
+}
+
+#map .bubble circle:hover {
+    stroke: black;
+    stroke-width: .5px;
+}
+
+#map,
+#map svg {
+    width: 960px;
+    height: 600px;
+}
+
+.map,
+.map svg {
+    width: 720px;
+    height: 450px;
+}
+
+
+#selectorPanel{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
