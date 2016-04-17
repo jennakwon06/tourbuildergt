@@ -50,42 +50,12 @@ function drawMap() {
 }
 
 function drawBubblesOnMap(results) {
+
+    console.log(results);
+
     d3.select(".bubble").remove();
 
     var arrayOfLocations = [];
-
-    for (var i = 0; i < results.length; i++) {
-        var temp = {
-            "address": "",
-            "count": 0,
-            "latitude": 0,
-            "longitude": 0,
-            "companies": []
-        };
-
-        temp.address = results[i].address;
-        temp.latitude = results[i].latitude;
-        temp.longitude = results[i].longitude;
-        temp.count = 1;
-        temp.companies.push(results[i]);
-        arrayOfLocations.push(temp);
-    }
-
-    arrayOfLocations.sort(function(a,b) {
-        return (a.address > b.address) ? 1 : ((b.address > a.address) ? -1 : 0);} ); //SORT BY ADDRESS
-
-    for (i = arrayOfLocations.length - 1; i > 0; i--) {
-        if (arrayOfLocations[i - 1].address == arrayOfLocations[i].address) {
-            arrayOfLocations[i - 1].count += arrayOfLocations[i].count;
-            arrayOfLocations[i - 1].companies.push.apply(arrayOfLocations[i - 1].companies, arrayOfLocations[i].companies);
-            arrayOfLocations[i] = null;
-        }
-    }
-
-    arrayOfLocations = arrayOfLocations.filter(Boolean);
-
-    console.log("is null filtered?");
-    console.log(arrayOfLocations);
 
     var radius = d3.scale.sqrt()
         .domain([0, 1e6])
@@ -103,36 +73,39 @@ function drawBubblesOnMap(results) {
     //    .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
     //    .attr("r", function(d) { return radius(d.properties.population); });
 
-    d3.select(".mapSvg g").append("g")
-        .attr("class", "bubble")
-        .selectAll("circle")
-        .data(arrayOfLocations)
-        .sort(function(a,b) {
-            return b.count - a.count;}) //@SORT BUBBLES BY SIZE
-        .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
-        .append("circle")
-        .attr("data-toggle", "modal")
-        .attr("data-target", "#myModal")
-        .attr("class", "mapCircle")
-        .attr("locationName", function(d) {
-            return d.address;
-        })
-        .attr("transform", function(d) {
-            return "translate(" + projection([d.longitude, d.latitude]) + ")"; })
-        .attr("r", function(d) {
-            return (radius(d.count) * 150);
-        })
-        .style("fill", function(d) {
-            return color(cValue(d));})
-        .on("click", function(d) {
-            // clear prev resuits
 
-            d3.select(".list-group")
-                .append("li")
-                .attr("class", "modal-list-item list-group-item")
-                .attr("value", 10)
-                .attr("id", 10);
-        });
+    d3.csv('/data/cityd_latlong.csv', function (data) {
+
+        console.log(data);
+
+        d3.select(".mapSvg g").append("g")
+            .attr("class", "bubble")
+            .selectAll("circle")
+            .data(data)
+            .filter(function(d) {
+                if (d.Artist == results){
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+            .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
+            .append("circle")
+            .attr("data-toggle", "modal")
+            .attr("data-target", "#myModal")
+            .attr("class", "mapCircle")
+            .attr("transform", function (d) {
+                return "translate(" + projection([d.longitude, d.latitude]) + ")";
+            })
+            .attr("r", function (d) {
+                return (radius(d.Rank) * 150);
+            })
+            .style("fill", function (d) {
+                return color(cValue(d));
+            })
+            .on("click", function (d) {
+            });
+    });
 }
 
 //function zoomed() {

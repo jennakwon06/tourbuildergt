@@ -14,6 +14,13 @@ Template.Home.events({
         console.log(xmlHttp.responseText);
     },
 
+    'click #showResults': function (e) {
+        e.preventDefault();
+        console.log($("#inputArtist").val());
+        drawBubblesOnMap($("#inputArtist").val());
+
+    },
+
     'click #sortByRankingButton': function(e) {
         //fillTable(globalFilter.top(Infinity).reverse())
     },

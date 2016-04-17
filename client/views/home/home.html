@@ -1,6 +1,6 @@
 <template name="Home">
 
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!--QUERY... -->
 
 	<div class="page-container container" id="content" style="background-color: white">
 		<div class="row" id="title_row">
@@ -21,8 +21,8 @@
                 <form class="pure-form form-group">
                     <fieldset>
 
-                        <input type="email" placeholder="Artist">
-                        <button type="submit" class="btn btn-primary">Show Results</button>
+                        <input id="inputArtist" type="email" placeholder="Search Artist">
+                        <button type="submit" id="showResults" class="btn btn-primary">Show Results</button>
                     </fieldset>
                 </form>
 
@@ -32,12 +32,12 @@
                 <input type="range" id="myRange" min="1" max="30" style="width: 500px; margin:0px"
                        onchange="myFunction()">
 
-
-                <p id="demo"></p>
-
+                <div >
+                    <p id="demo"></p>
+                </div>
                 <script>
                     function myFunction() {
-                        var x = document.getElementById("myRange").value;
+                        var x = "Top " + document.getElementById("myRange").value + " Cities";
                         document.getElementById("demo").innerHTML = x;
                     }
                 </script>
@@ -48,20 +48,6 @@
 
 
             </div>
-
-
-
-
-            <!--<form method="post">-->
-            <!--<div data-role="rangeslider">-->
-            <!--<label for="price-min">Ranking:</label>-->
-            <!--<input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">-->
-            <!--<label for="price-max">Ranking:</label>-->
-            <!--<input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">-->
-            <!--</div>-->
-            <!--<input type="submit" data-inline="true" value="Submit">-->
-            <!--</form>-->
-
 
         </div>
 
