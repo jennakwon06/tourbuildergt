@@ -18,6 +18,7 @@ Template.Home.events({
         e.preventDefault();
         console.log($("#inputArtist").val());
         drawBubblesOnMap($("#inputArtist").val());
+        fillTable($("#inputArtist"));
 
     },
 
@@ -47,6 +48,9 @@ Template.Home.events({
 });
 
 var fillTable = function(results){
+
+    console.log(results);
+
     var table = $(".resultsTable");
 
     //clear table

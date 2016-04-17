@@ -24,7 +24,6 @@ function drawMap() {
 
     d3.json("/us-10m.json", function(error, us) {
 
-        console.log(us);
 
         //https://bl.ocks.org/mbostock/9943478
         if (error) throw error;
@@ -51,8 +50,6 @@ function drawMap() {
 
 function drawBubblesOnMap(results) {
 
-    console.log(results);
-
     d3.select(".bubble").remove();
 
     var arrayOfLocations = [];
@@ -76,6 +73,7 @@ function drawBubblesOnMap(results) {
 
     d3.csv('/data/cityd_latlong.csv', function (data) {
 
+        console.log("read csv file");
         console.log(data);
 
         d3.select(".mapSvg g").append("g")
@@ -83,13 +81,14 @@ function drawBubblesOnMap(results) {
             .selectAll("circle")
             .data(data)
             .filter(function(d) {
-                if (d.Artist == results){
-                    return true;
-                } else {
-                    return false;
+                console.log("FILTER");
+                console.log(results);
+                console.log(d.Artist);
+                console.log(d);
+                if (d.Artist === results){
+                    return d;
                 }
             })
-            .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
             .append("circle")
             .attr("data-toggle", "modal")
             .attr("data-target", "#myModal")
