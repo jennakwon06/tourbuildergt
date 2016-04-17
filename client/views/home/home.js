@@ -48,39 +48,30 @@ Template.Home.events({
 });
 
 var fillTable = function(results){
-
-    var array= [];
-
-
     d3.csv('/data/cityd_latlong.csv', function (data) {
         console.log(data);
 
+        var table = $(".resultsTable");
+
+        //clear table
+        $('.resultsTable > tbody').empty();
+
+
         for (var i = 0; i < data.length; i++) {
             if (data[i].Artist.toUpperCase() === results.toUpperCase()) {
-                var table = $(".resultsTable");
-
-                //clear table
-                $('.resultsTable > tbody').empty();
-
                 var tr = document.createElement('tr');
-
                 tr.className += "clickableRow";
-                tr.id += results[i].Name;
-                tr.setAttribute("data-toggle", "modal");
-                tr.setAttribute("data-target", "#myModal");
-
                 var td1 = document.createElement('td');
                 var td2 = document.createElement('td');
                 var td3 = document.createElement('td');
-
                 td1.appendChild(document.createTextNode(data[i].Artist));
                 td2.appendChild(document.createTextNode(data[i].Rank));
                 td3.appendChild(document.createTextNode(data[i].City));
-
                 tr.appendChild(td1);
                 tr.appendChild(td2);
                 tr.appendChild(td3);
                 //tr.data(results[i]);
+
                 table.append(tr);
             }
         }
