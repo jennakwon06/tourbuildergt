@@ -18,7 +18,7 @@ Template.Home.events({
         e.preventDefault();
         console.log($("#inputArtist").val());
         drawBubblesOnMap($("#inputArtist").val());
-        fillTable($("#inputArtist"));
+        fillTable($("#inputArtist").val());
 
     },
 
@@ -49,38 +49,43 @@ Template.Home.events({
 
 var fillTable = function(results){
 
-    console.log(results);
+    var array= [];
 
-    var table = $(".resultsTable");
 
-    //clear table
-    $('.resultsTable > tbody').empty();
+    d3.csv('/data/cityd_latlong.csv', function (data) {
+        console.log(data);
 
-    for (var i = 0; i <= results.length - 1; i++) {
-        var tr = document.createElement('tr');
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].Artist.toUpperCase() === results.toUpperCase()) {
+                var table = $(".resultsTable");
 
-        tr.className += "clickableRow";
-        tr.id += results[i].Name;
-        tr.setAttribute("data-toggle", "modal");
-        tr.setAttribute("data-target", "#myModal");
+                //clear table
+                $('.resultsTable > tbody').empty();
 
-        var td1 = document.createElement('td');
-        var td2 = document.createElement('td');
-        var td3 = document.createElement('td');
-        var td4 = document.createElement('td');
+                var tr = document.createElement('tr');
 
-        td1.appendChild(document.createTextNode(results[i].Name));
-        td2.appendChild(document.createTextNode(results[i].industry));
-        td3.appendChild(document.createTextNode(results[i].sector));
-        td4.appendChild(document.createTextNode(results[i].country));
+                tr.className += "clickableRow";
+                tr.id += results[i].Name;
+                tr.setAttribute("data-toggle", "modal");
+                tr.setAttribute("data-target", "#myModal");
 
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        tr.appendChild(td4);
-        //tr.data(results[i]);
-        table.append(tr);
-    }
+                var td1 = document.createElement('td');
+                var td2 = document.createElement('td');
+                var td3 = document.createElement('td');
+
+                td1.appendChild(document.createTextNode(data[i].Artist));
+                td2.appendChild(document.createTextNode(data[i].Rank));
+                td3.appendChild(document.createTextNode(data[i].City));
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                //tr.data(results[i]);
+                table.append(tr);
+            }
+        }
+    });
+
 };
 
 Template.Home.helpers({

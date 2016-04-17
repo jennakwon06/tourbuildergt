@@ -7,7 +7,7 @@ function drawMap() {
     var width = 960,
         height = 600;
 
-    var projection = d3.geo.albersUsa()
+    projection = d3.geo.albersUsa()
         .scale(1000)
         .translate([width / 2, height / 2]);
 
@@ -20,7 +20,8 @@ function drawMap() {
 
     var svg = d3.select("#usMap").append("svg")
         .attr("width", width)
-        .attr("height", height);
+        .attr("height", height)
+        .attr("class", "mySvg");
 
     d3.json("/us-10m.json", function(error, us) {
 
@@ -76,22 +77,19 @@ function drawBubblesOnMap(results) {
         console.log("read csv file");
         console.log(data);
 
-        d3.select(".mapSvg g").append("g")
+        d3.select(".mySvg").append("g")
             .attr("class", "bubble")
             .selectAll("circle")
             .data(data)
+            .enter()
+            .append("circle")
             .filter(function(d) {
-                console.log("FILTER");
-                console.log(results);
-                console.log(d.Artist);
+                console.log("what is my d")
                 console.log(d);
-                if (d.Artist === results){
+                if (d.Artist.toUpperCase() === results.toUpperCase()){
                     return d;
                 }
             })
-            .append("circle")
-            .attr("data-toggle", "modal")
-            .attr("data-target", "#myModal")
             .attr("class", "mapCircle")
             .attr("transform", function (d) {
                 return "translate(" + projection([d.longitude, d.latitude]) + ")";
