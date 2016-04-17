@@ -1,4 +1,3 @@
-console.log("logging");
 console.log(slider(d3.select("#slider3")));
 
 //

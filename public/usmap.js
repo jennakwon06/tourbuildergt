@@ -75,7 +75,7 @@ function drawBubblesOnMap(results) {
     d3.csv('/data/cityd_latlong.csv', function (data) {
 
         console.log("whats the count")
-        console.log($("#sliderCount"))
+        console.log($("#sliderCount").val())
         d3.select(".mySvg").append("g")
             .attr("class", "bubble")
             .selectAll("circle")
