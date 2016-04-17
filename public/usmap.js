@@ -74,9 +74,8 @@ function drawBubblesOnMap(results) {
 
     d3.csv('/data/cityd_latlong.csv', function (data) {
 
-        console.log("read csv file");
-        console.log(data);
-
+        console.log("whats the count")
+        console.log($("#sliderCount"))
         d3.select(".mySvg").append("g")
             .attr("class", "bubble")
             .selectAll("circle")
@@ -84,8 +83,6 @@ function drawBubblesOnMap(results) {
             .enter()
             .append("circle")
             .filter(function(d) {
-                console.log("what is my d")
-                console.log(d);
                 if (d.Artist.toUpperCase() === results.toUpperCase()){
                     return d;
                 }
@@ -95,7 +92,7 @@ function drawBubblesOnMap(results) {
                 return "translate(" + projection([d.longitude, d.latitude]) + ")";
             })
             .attr("r", function (d) {
-                return (radius(d.Rank) * 150);
+                return (radius(d.Rank) * 250);
             })
             .style("fill", function (d) {
                 return color(cValue(d));
